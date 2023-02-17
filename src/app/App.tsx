@@ -7,17 +7,17 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import 'app/styles/index.scss';
 
 export const App = () => {
-	const [theme] = useTheme();
-	
-	return (
-		<div className={classNames('app', [theme], {})}>
-			<Suspense fallback="">
-				<Navbar />
-				<div className="content-page">
-					<Sidebar />
-					<AppRouter />
-				</div>
-			</Suspense>
-		</div>
-	);
+    const [theme] = useTheme();
+
+    return (
+        <div className={classNames('app', [theme], {})}>
+            <Suspense fallback="">
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
+        </div>
+    );
 };

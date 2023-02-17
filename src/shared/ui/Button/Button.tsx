@@ -3,23 +3,22 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import s from './Button.module.scss';
 
 export enum ThemeButton {
-	CLEAR = 'clear'
+    CLEAR = 'clear'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	children: ReactNode;
-	theme?: ThemeButton;
-	className?: string;
+    children: ReactNode;
+    theme?: ThemeButton;
+    className?: string;
 }
 
-export const Button = ({ className, children, theme = ThemeButton.CLEAR, ...props }: ButtonProps) => {
-	
-	return (
-		<button
-			className={classNames(s.btn, [className, s[theme]], {})}
-			{...props}
-		>
-			{children}
-		</button>
-	);
-};
+export const Button = ({
+    className, children, theme = ThemeButton.CLEAR, ...props
+}: ButtonProps) => (
+    <button
+        className={classNames(s.btn, [className, s[theme]], {})}
+        {...props}
+    >
+        {children}
+    </button>
+);
