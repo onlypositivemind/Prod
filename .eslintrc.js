@@ -2,12 +2,9 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'airbnb',
-        'plugin:i18next/recommended',
-    ],
+    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:prettier/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -16,13 +13,11 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: [
-        'react',
-        '@typescript-eslint',
-        'i18next',
-    ],
+    plugins: ['react', 'prettier', '@typescript-eslint', 'i18next'],
     rules: {
-        indent: ['error', 4],
+        'prettier/prettier': 'error',
+        'indent': ['error', 4],
+        'max-len': ['error', { code: 120, ignoreComments: true }],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'react/react-in-jsx-scope': 'off',
@@ -38,23 +33,26 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error', {
-            markupOnly: true,
-            ignoreAttribute: [
-                'data-testid',
-                'target',
-                'to',
-                'name',
-                'alt',
-                'justify',
-                'align',
-                'direction',
-                'gap',
-                'role',
-                'as',
-                'border',
-            ],
-        }],
+        'i18next/no-literal-string': [
+            'error',
+            {
+                markupOnly: true,
+                ignoreAttribute: [
+                    'data-testid',
+                    'target',
+                    'to',
+                    'name',
+                    'alt',
+                    'justify',
+                    'align',
+                    'direction',
+                    'gap',
+                    'role',
+                    'as',
+                    'border',
+                ],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
