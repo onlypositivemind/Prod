@@ -1,0 +1,6 @@
+.wrapper {
+    display: grid;
+    flex-grow: 1;
+    place-items: center;
+    height: calc(100vh - var(--navbar-height));
+}

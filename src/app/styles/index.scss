@@ -12,6 +12,7 @@
 
 .content-page {
     display: flex;
+    height: calc(100vh - var(--navbar-height));
 }
 
 main {

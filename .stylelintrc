@@ -609,7 +609,11 @@
                 "severity": "warning"
             }
         ],
-        "no-eol-whitespace": true,
+        "no-eol-whitespace": [
+            true, {
+                "ignore": ["empty-lines"]
+            }
+        ],
         "no-extra-semicolons": true,
         "no-invalid-double-slash-comments": true,
         "no-missing-end-of-source-newline": null,

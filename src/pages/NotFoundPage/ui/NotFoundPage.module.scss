@@ -1,0 +1,9 @@
+.wrapper {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    
+    h2 {
+        font: var(--font-l);
+    }
+}
