@@ -14,8 +14,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <aside className={classNames(s.sidebar, [className], { [s.collapsed]: collapsed })}>
-            <Button onClick={() => setCollapsed(!collapsed)}>
+        <aside data-testid='sidebar' className={classNames(s.sidebar, [className], { [s.collapsed]: collapsed })}>
+            <Button data-testid='toggle-btn' onClick={() => setCollapsed(!collapsed)}>
                 <BurgerIcon className={s.icon} />
             </Button>
             <div className={s.switchers}>
