@@ -3,7 +3,8 @@
     padding: 20px;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
-    background-color: var(--inverted-bg-color);
+    box-shadow: 0.5px 2px 2px var(--shaodw-color);
+    background-color: var(--bg-secondary-color);
     transition: width 0.2s ease-in-out;
 }
 
@@ -22,5 +23,5 @@
 }
 
 .icon * {
-    fill: var(--inverted-secondary-color);
+    fill: var(--white);
 }

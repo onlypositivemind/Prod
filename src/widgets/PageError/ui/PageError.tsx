@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button/Button';
-import { LangSwitcher } from 'widgets/LangSwitcher';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import s from './PageError.module.scss';
 
 export const PageError = () => {
@@ -13,9 +12,10 @@ export const PageError = () => {
 
     return (
         <div className={s.pageError}>
-            <p>{t('Что-то пошло не так.')}</p>
-            <Button onClick={handleReload}>{t('Обновить')}</Button>
-            <LangSwitcher />
+            <p>{t('Что-то пошло не так')}</p>
+            <Button onClick={handleReload} theme={ThemeButton.BLUE}>
+                {t('Обновить')}
+            </Button>
         </div>
     );
 };

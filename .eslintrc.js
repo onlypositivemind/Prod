@@ -17,11 +17,22 @@ module.exports = {
     rules: {
         'prettier/prettier': 'error',
         'indent': ['error', 4],
-        'max-len': ['error', { code: 120, ignoreComments: true }],
+        'max-len': [
+            'error',
+            {
+                code: 120,
+                ignoreComments: true,
+            },
+        ],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.tsx'] }],
+        'react/jsx-filename-extension': [
+            'error',
+            {
+                extensions: ['.js', '.jsx', '.tsx'],
+            },
+        ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'warn',

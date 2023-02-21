@@ -2,7 +2,8 @@
     padding: 20px;
     width: 100%;
     height: var(--navbar-height);
-    background-color: var(--inverted-bg-color);
+    box-shadow: var(--shadow);
+    background-color: var(--bg-secondary-color);
 }
 
 ul {

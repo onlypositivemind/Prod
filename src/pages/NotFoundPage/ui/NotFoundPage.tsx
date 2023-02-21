@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { useNavigate } from 'react-router-dom';
 import s from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {
@@ -7,11 +9,19 @@ interface NotFoundPageProps {
 }
 
 export const NotFoundPage = ({ className }: NotFoundPageProps) => {
-    const { t } = useTranslation('notFoundPage');
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
 
     return (
-        <main className={classNames(s.wrapper, [className])}>
+        <main className={classNames(s.notFoundPage, [className])}>
             <h2>{t('Страница не найдена')}</h2>
+            <Button theme={ThemeButton.PRIMARY} onClick={goBack}>
+                {t('Назад')}
+            </Button>
         </main>
     );
 };

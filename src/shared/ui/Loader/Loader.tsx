@@ -12,14 +12,6 @@ export const Loader = ({ className }: LoaderProps) => {
             <div />
             <div />
             <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
         </div>
     );
 };

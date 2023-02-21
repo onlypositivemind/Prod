@@ -1,11 +1,8 @@
 .link {
     font-size: var(--font-size-l);
+    color: var(--white);
 }
 
 .primary {
-    color: var(--inverted-primary-color);
-}
-
-.secondary {
-    color: var(--inverted-secondary-color);
+    color: var(--primary-color);
 }

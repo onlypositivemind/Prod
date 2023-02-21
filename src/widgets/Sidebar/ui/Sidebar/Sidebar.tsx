@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
 import BurgerIcon from 'shared/assets/icons/burger.svg';
 import s from './Sidebar.module.scss';
@@ -14,8 +14,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <aside data-testid='sidebar' className={classNames(s.sidebar, [className], { [s.collapsed]: collapsed })}>
-            <Button data-testid='toggle-btn' onClick={() => setCollapsed(!collapsed)}>
+        <aside
+            data-testid='sidebar'
+            className={classNames(s.sidebar, [className], {
+                [s.collapsed]: collapsed,
+            })}
+        >
+            <Button data-testid='toggle-btn' theme={ThemeButton.CLEAR} onClick={() => setCollapsed(!collapsed)}>
                 <BurgerIcon className={s.icon} />
             </Button>
             <div className={s.switchers}>

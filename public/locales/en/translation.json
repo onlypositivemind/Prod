@@ -1,6 +1,8 @@
 {
     "Главная": "Main",
     "О нас": "About",
-    "Что-то пошло не так.": "Something went wrong.",
+    "Страница не найдена": "Page not found",
+    "Назад": "Back",
+    "Что-то пошло не так": "Something went wrong",
     "Обновить": "Reload"
 }
