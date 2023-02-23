@@ -1,24 +1,35 @@
 .Button {
     margin: 0;
-    padding: 0;
+    padding: 8px 20px;
     cursor: pointer;
 }
 
 .clear {
     border: none;
+    padding: 0;
     background-color: transparent;
 }
 
 .primary {
     border-radius: var(--radii);
-    padding: 10px 15px;
-    color: var(--secondary-color);
+    color: var(--inverted-primary-color);
     background-color: var(--inverted-bg-color);
 }
 
 .blue {
     border-radius: var(--radii);
-    padding: 10px 15px;
     color: var(--white);
     background-color: var(--blue);
+}
+
+.size_s {
+    font: var(--font-s);
+}
+
+.size_m {
+    font: var(--font-m);
+}
+
+.size_l {
+    font: var(--font-l);
 }

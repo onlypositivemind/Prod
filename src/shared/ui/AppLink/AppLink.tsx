@@ -8,14 +8,21 @@ export enum AppLinkTheme {
     SECONDARY = 'secondary',
 }
 
-interface AppLinkProps extends LinkProps {
-    children: ReactNode;
-    theme?: AppLinkTheme;
-    className?: string;
+export enum AppLinkSize {
+    S = 'size_s',
+    M = 'size_m',
+    L = 'size_l',
 }
 
-export const AppLink = ({ className, children, to, theme, ...props }: AppLinkProps) => (
-    <Link to={to} className={classNames(s.link, [className, s[theme]], {})} {...props}>
+interface AppLinkProps extends LinkProps {
+    children: ReactNode;
+    className?: string;
+    theme?: AppLinkTheme;
+    size?: AppLinkSize;
+}
+
+export const AppLink = ({ className, children, to, theme, size = AppLinkSize.M, ...props }: AppLinkProps) => (
+    <Link to={to} className={classNames(s.link, [className, s[theme], s[size]], {})} {...props}>
         {children}
     </Link>
 );

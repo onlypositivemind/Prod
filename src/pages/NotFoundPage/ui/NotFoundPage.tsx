@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import s from './NotFoundPage.module.scss';
 
@@ -19,7 +19,7 @@ export const NotFoundPage = ({ className }: NotFoundPageProps) => {
     return (
         <main className={classNames(s.notFoundPage, [className])}>
             <h2>{t('Страница не найдена')}</h2>
-            <Button theme={ThemeButton.PRIMARY} onClick={goBack}>
+            <Button theme={ButtonTheme.PRIMARY} onClick={goBack}>
                 {t('Назад')}
             </Button>
         </main>

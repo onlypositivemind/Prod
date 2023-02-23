@@ -6,8 +6,6 @@ export const SidebarBgColorDecorator = (theme: Theme) => (StoryComponent: Story)
         <div
             style={{
                 backgroundColor: theme === 'light' ? '#4f7faf' : '#2b3945',
-                width: 'fit-content',
-                padding: 50,
             }}
         >
             <StoryComponent />

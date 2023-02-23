@@ -64,6 +64,7 @@ module.exports = {
                 ],
             },
         ],
+        'camelcase': 'off',
     },
     globals: {
         __IS_DEV__: true,
