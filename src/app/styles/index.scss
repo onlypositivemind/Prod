@@ -3,17 +3,13 @@
 @import 'themes/light';
 @import 'themes/dark';
 
-:root {
-    --white: #fff;
-    --black: #000;
-    --blue: #4f7faf;
-    --radii: 12px;
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
 }
 
 .app {
     min-height: 100vh;
-    font: var(--font-m);
-    color: var(--primary-color);
     background-color: var(--bg-color);
 }
 

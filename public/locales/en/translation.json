@@ -4,5 +4,8 @@
     "Страница не найдена": "Page not found",
     "Назад": "Back",
     "Что-то пошло не так": "Something went wrong",
-    "Обновить": "Reload"
+    "Обновить": "Reload",
+    "Войти": "Sign in",
+    "Имя пользователя": "Username",
+    "Пароль": "Password"
 }

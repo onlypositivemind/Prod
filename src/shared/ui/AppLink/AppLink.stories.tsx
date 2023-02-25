@@ -7,16 +7,11 @@ import { AppLink, AppLinkSize, AppLinkTheme } from './AppLink';
 export default {
     title: 'shared/AppLink',
     component: AppLink,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    args: {
-        to: '/',
-        children: 'Link',
-    },
+    argTypes: { backgroundColor: { control: 'color' } },
+    args: { to: '/' },
 } as ComponentMeta<typeof AppLink>;
 
-const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
+const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args}>Link</AppLink>;
 
 export const PrimaryLight_S = Template.bind({});
 PrimaryLight_S.args = {
@@ -37,7 +32,5 @@ PrimaryLight_L.args = {
 };
 
 export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-    theme: AppLinkTheme.PRIMARY,
-};
+PrimaryDark.args = { theme: AppLinkTheme.PRIMARY };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];

@@ -17,11 +17,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <aside
             data-testid='sidebar'
-            className={classNames(s.sidebar, [className], {
-                [s.collapsed]: collapsed,
-            })}
+            className={classNames(s.sidebar, [className], { [s.collapsed]: collapsed })}
         >
-            <Button data-testid='toggle-btn' theme={ButtonTheme.CLEAR} onClick={() => setCollapsed(!collapsed)}>
+            <Button
+                data-testid='toggle-btn'
+                theme={ButtonTheme.CLEAR}
+                onClick={() => setCollapsed(!collapsed)}
+            >
                 <BurgerIcon className={s.icon} />
             </Button>
             <Navbar collapsed={collapsed} />
@@ -30,5 +32,6 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 <LangSwitcher />
             </div>
         </aside>
+
     );
 };

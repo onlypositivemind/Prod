@@ -5,7 +5,6 @@ import s from './AppLink.module.scss';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',
-    SECONDARY = 'secondary',
 }
 
 export enum AppLinkSize {
@@ -22,7 +21,11 @@ interface AppLinkProps extends LinkProps {
 }
 
 export const AppLink = ({ className, children, to, theme, size = AppLinkSize.M, ...props }: AppLinkProps) => (
-    <Link to={to} className={classNames(s.link, [className, s[theme], s[size]], {})} {...props}>
+    <Link
+        to={to}
+        className={classNames(s.link, [className, s[theme], s[size]], {})}
+        {...props}
+    >
         {children}
     </Link>
 );

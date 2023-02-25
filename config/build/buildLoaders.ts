@@ -8,18 +8,14 @@ export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => 
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-            },
+            options: { presets: ['@babel/preset-env'] },
         },
     };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
-            {
-                loader: 'file-loader',
-            },
+            { loader: 'file-loader' },
         ],
     };
 

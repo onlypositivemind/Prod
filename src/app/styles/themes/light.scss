@@ -1,7 +1,8 @@
-.app.light {
+body[data-theme='light'] {
     --bg-color: #f4f4f4;
     --inverted-bg-color: #202c37;
     --bg-secondary-color: #4f7faf;
+    --inverted-bg-secondary-color: #2b3945;
     --primary-color: #111517;
     --inverted-primary-color: #fefefe;
     --shadow: rgb(0 0 0 / 30%) 0 0 8px;

@@ -22,7 +22,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({ className, children, theme, size = ButtonSize.M, ...props }: ButtonProps) => (
-    <button className={classNames(s.Button, [className, s[theme], s[size]], {})} {...props}>
+    <button
+        className={classNames(s.Button, [className, s[theme], s[size]], {})}
+        {...props}
+    >
         {children}
     </button>
 );

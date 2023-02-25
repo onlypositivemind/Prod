@@ -8,15 +8,10 @@ import { Button, ButtonSize, ButtonTheme } from './Button';
 export default {
     title: 'shared/Button',
     component: Button,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    args: {
-        children: 'Button',
-    },
+    argTypes: { backgroundColor: { control: 'color' } },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args}>Button</Button>;
 
 export const Clear_S = Template.bind({});
 Clear_S.args = {
@@ -55,9 +50,7 @@ PrimaryLight_L.args = {
 };
 
 export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-    theme: ButtonTheme.PRIMARY,
-};
+PrimaryDark.args = { theme: ButtonTheme.PRIMARY };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const BlueLight_S = Template.bind({});
@@ -79,7 +72,5 @@ BlueLight_L.args = {
 };
 
 export const BlueDark = Template.bind({});
-BlueDark.args = {
-    theme: ButtonTheme.BLUE,
-};
+BlueDark.args = { theme: ButtonTheme.BLUE };
 BlueDark.decorators = [ThemeDecorator(Theme.DARK)];

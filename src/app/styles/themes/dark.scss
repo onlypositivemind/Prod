@@ -1,7 +1,8 @@
-.app.dark {
+body[data-theme='dark'] {
     --bg-color: #202c37;
     --inverted-bg-color: #f4f4f4;
     --bg-secondary-color: #2b3945;
+    --inverted-bg-secondary-color: #4f7faf;
     --primary-color: #fefefe;
     --inverted-primary-color: #111517;
     --shadow: rgb(245 245 245 / 20%) 0 0 8px;

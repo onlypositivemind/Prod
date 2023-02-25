@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
 const defaultValue = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
@@ -17,6 +17,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
         }),
         [theme],
     );
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', theme);
+    }, [theme]);
 
     return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
