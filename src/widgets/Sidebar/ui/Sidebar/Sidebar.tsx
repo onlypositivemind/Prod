@@ -28,8 +28,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
             </Button>
             <Navbar collapsed={collapsed} />
             <div className={s.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher className={s.lang} />
+                <ThemeSwitcher className={s.switcher} />
+                <LangSwitcher className={s.switcher} />
             </div>
         </aside>
 

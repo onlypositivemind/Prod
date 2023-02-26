@@ -58,7 +58,7 @@ export const Header = ({ className }: HeaderProps) => {
                     {t('Войти')}
                 </Button>
             </div>
-            <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />
+            {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />}
         </header>
     );
 };
