@@ -74,3 +74,15 @@ BlueLight_L.args = {
 export const BlueDark = Template.bind({});
 BlueDark.args = { theme: ButtonTheme.BLUE };
 BlueDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const DisabledPrimary = Template.bind({});
+DisabledPrimary.args = {
+    theme: ButtonTheme.PRIMARY,
+    disabled: true,
+};
+
+export const DisabledBlue = Template.bind({});
+DisabledBlue.args = {
+    theme: ButtonTheme.BLUE,
+    disabled: true,
+};

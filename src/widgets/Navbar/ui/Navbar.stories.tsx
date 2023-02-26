@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Theme } from 'app/providers/ThemeProvider';
-import { SidebarBgColorDecorator } from 'shared/config/storybook/SidebarBgColorDecorator';
+import { SecondaryBgColorDecorator } from 'shared/config/storybook/SecondaryBgColorDecorator';
 import { Navbar } from './Navbar';
 
 export default {
@@ -15,8 +15,8 @@ const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [SidebarBgColorDecorator(Theme.LIGHT)];
+Light.decorators = [SecondaryBgColorDecorator(Theme.LIGHT)];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [SidebarBgColorDecorator(Theme.DARK)];
+Dark.decorators = [SecondaryBgColorDecorator(Theme.DARK)];

@@ -1,4 +1,5 @@
 .loginFrom {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8,4 +9,10 @@
 
 .loginBtn {
     margin-left: auto;
+}
+
+.error {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
 }

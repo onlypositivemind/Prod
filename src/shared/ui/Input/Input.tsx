@@ -60,7 +60,7 @@ export const Input = memo(({
                     onSelect={handleSelect}
                     {...props}
                 />
-                {isFocused && <span className={s.caret} style={{ left: caretPosition * 8.5 }} />}
+                {isFocused && <span className={s.caret} style={{ left: caretPosition * 8.2 }} />}
             </div>
         </div>
     );

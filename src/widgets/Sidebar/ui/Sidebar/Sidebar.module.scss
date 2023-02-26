@@ -8,20 +8,34 @@
     transition: width 0.2s ease-in-out;
 }
 
-.sidebar.collapsed {
-    width: var(--sidebar-width-collapsed);
-}
-
 .switchers {
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: 35px;
     display: flex;
     align-items: center;
     gap: 15px;
-    transform: translate(-50%);
+    transform: translate(-50%) rotate(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.lang {
+    transform: rotate(0);
+    transition: transform 0.1s ease-in-out;
 }
 
 .icon {
     fill: var(--white);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
+    
+    .switchers {
+        transform: translate(-50%) rotate(-90deg);
+    }
+    
+    .lang {
+        transform: rotate(90deg);
+    }
 }

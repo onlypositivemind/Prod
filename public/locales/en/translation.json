@@ -5,7 +5,10 @@
     "Назад": "Back",
     "Что-то пошло не так": "Something went wrong",
     "Обновить": "Reload",
-    "Войти": "Sign in",
+    "Войти": "Log in",
+    "Форма авторизации": "Authorization form",
     "Имя пользователя": "Username",
-    "Пароль": "Password"
+    "Пароль": "Password",
+    "Неверное имя или пароль": "Invalid username or password",
+    "Выйти": "Log out"
 }
