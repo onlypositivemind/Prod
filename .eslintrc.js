@@ -68,7 +68,7 @@ module.exports = {
         'jsx-quotes': ['error', 'prefer-single'],
         'object-curly-newline': ['error', { multiline: true }],
         'no-param-reassign': 'off',
-
+        'lines-between-class-members': 'off',
     },
     globals: { __IS_DEV__: true },
     overrides: [
