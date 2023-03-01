@@ -66,11 +66,15 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         quotes: ['error', 'single', { avoidEscape: true }],
         'jsx-quotes': ['error', 'prefer-single'],
-        'object-curly-newline': ['error', { multiline: true }],
+        'object-curly-newline': 'off',
         'no-param-reassign': 'off',
         'lines-between-class-members': 'off',
+        'no-undef': 'off',
     },
-    globals: { __IS_DEV__: true },
+    globals: {
+        __IS_DEV__: true,
+        __API__: true,
+    },
     overrides: [
         {
             files: ['**/src/**/*.{test,stories}.{ts,tsx}'],

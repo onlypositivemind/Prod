@@ -6,9 +6,9 @@ export const useTheme = (): [Theme, () => void] => {
 
     const toggleTheme = () => {
         const t = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
-        setTheme(t);
+        setTheme?.(t);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, t);
     };
 
-    return [theme, toggleTheme];
+    return [theme || Theme.LIGHT, toggleTheme];
 };

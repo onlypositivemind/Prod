@@ -5,28 +5,28 @@ import s from './Input.module.scss';
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
 interface InputProps extends HTMLInputProps {
-    value: string;
-    onChange: (value: string) => void;
+    value?: string;
+    onChange?: (value: string) => void;
     autoFocus?: boolean;
     className?: string;
 }
 
 export const Input = memo(({
     className,
+    type = 'text',
     value,
     onChange,
-    type = 'text',
     placeholder,
     autoFocus,
     ...props
 }: InputProps) => {
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        onChange(value);
+        onChange?.(value);
         setCaretPosition(value.length);
     };
 
@@ -37,7 +37,7 @@ export const Input = memo(({
     useEffect(() => {
         if (autoFocus) {
             setIsFocused(true);
-            inputRef.current.focus();
+            inputRef.current?.focus();
         }
     }, [autoFocus]);
 

@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import s from './AppLink.module.scss';
 
 export enum AppLinkTheme {
+    WHITE = 'white',
     PRIMARY = 'primary',
 }
 
@@ -20,7 +21,14 @@ interface AppLinkProps extends LinkProps {
     size?: AppLinkSize;
 }
 
-export const AppLink = ({ className, children, to, theme, size = AppLinkSize.M, ...props }: AppLinkProps) => (
+export const AppLink = memo(({
+    className,
+    children,
+    to,
+    theme = AppLinkTheme.WHITE,
+    size = AppLinkSize.M,
+    ...props
+}: AppLinkProps) => (
     <Link
         to={to}
         className={classNames(s.link, [className, s[theme], s[size]], {})}
@@ -28,4 +36,4 @@ export const AppLink = ({ className, children, to, theme, size = AppLinkSize.M, 
     >
         {children}
     </Link>
-);
+));

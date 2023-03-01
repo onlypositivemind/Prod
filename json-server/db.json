@@ -23,19 +23,16 @@
             "id": "1",
             "username": "admin",
             "password": "123"
-        },
-        {
-            "id": "2",
-            "username": "admin1",
-            "password": "1232"
-        },
-        {
-            "id": "3",
-            "username": "admin1",
-            "password": "1232"
         }
     ],
     "profile": {
-        "name": "typicode"
+        "firstname": "Evgenii",
+        "lastname": "TSovich",
+        "age": 23,
+        "currency": "RUB",
+        "country": "Russia",
+        "city": "Moscow",
+        "username": "admin",
+        "avatar": "https://avatars.githubusercontent.com/u/109303573?v=4"
     }
 }

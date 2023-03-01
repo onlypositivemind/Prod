@@ -16,7 +16,7 @@ const ANIMATION_DELAY = 200;
 export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -57,7 +57,9 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
         }
 
         return () => {
-            clearTimeout(timerRef.current);
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
             window.removeEventListener('keydown', handleKey);
         };
     }, [handleKey, isOpen]);

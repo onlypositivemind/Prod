@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -12,7 +12,7 @@ interface HeaderProps {
     className?: string;
 }
 
-export const Header = ({ className }: HeaderProps) => {
+export const Header = memo(({ className }: HeaderProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const [isAuthModal, setIsAuthModal] = useState(false);
@@ -28,7 +28,6 @@ export const Header = ({ className }: HeaderProps) => {
 
     const handleLogout = useCallback(() => {
         dispatch(userActions.logout());
-        setIsAuthModal(false);
     }, [dispatch]);
 
     if (authData) {
@@ -61,4 +60,4 @@ export const Header = ({ className }: HeaderProps) => {
             {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />}
         </header>
     );
-};
+});

@@ -11,7 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: 'color' } },
 } as ComponentMeta<typeof PageError>;
 
-const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args} />;
+const Template: ComponentStory<typeof PageError> = () => <PageError />;
 
 export const Light = Template.bind({});
 Light.args = {};

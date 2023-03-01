@@ -17,11 +17,12 @@ import s from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
+    handleCloseModal: () => void;
 }
 
-const initialReducers: ReducersList = { loginForm: loginReducer };
+const reducers: ReducersList = { loginForm: loginReducer };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, handleCloseModal }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
@@ -37,12 +38,15 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
         dispatch(loginActions.setPassword(pass));
     }, [dispatch]);
 
-    const handleLogin = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, password, username]);
+    const handleLogin = useCallback(async () => {
+        const res = await dispatch(loginByUsername({ username, password }));
+        if (res.meta.requestStatus === 'fulfilled') {
+            handleCloseModal();
+        }
+    }, [dispatch, handleCloseModal, password, username]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} removeWhenUnmount>
+        <DynamicModuleLoader reducers={reducers} removeWhenUnmount>
             <div className={classNames(s.loginFrom, [className], {})}>
                 <Text title={t('Форма авторизации')} />
                 {error && <Text text={t('Неверное имя или пароль')} theme={TextTheme.ERROR} className={s.error} />}
