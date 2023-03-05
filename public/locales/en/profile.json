@@ -1,6 +1,3 @@
 {
-    "Профиль": "Profile",
-    "Изменить": "Edit",
-    "Имя": "Name",
-    "Фамилия": "Surname"
+    "Произошла ошибка при загрузке профиля": "There was an error loading the profile"
 }

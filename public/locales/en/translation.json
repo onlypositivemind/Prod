@@ -11,5 +11,13 @@
     "Имя пользователя": "Username",
     "Пароль": "Password",
     "Неверное имя или пароль": "Invalid username or password",
-    "Выйти": "Log out"
+    "Выйти": "Log out",
+    "Изменить": "Edit",
+    "Имя": "Name",
+    "Фамилия": "Surname",
+    "Возраст": "Age",
+    "Город": "City",
+    "Аватар": "Avatar",
+    "Валюта": "Currency",
+    "Страна": "Country"
 }

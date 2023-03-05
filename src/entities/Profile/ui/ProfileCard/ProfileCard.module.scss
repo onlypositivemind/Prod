@@ -3,18 +3,18 @@
     padding: 20px;
 }
 
-.top {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.editBtn {
-    margin-left: auto;
+.loading,
+.error {
+    display: grid;
+    place-items: center;
 }
 
 .data {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.editing {
+    border-color: var(--blue);
 }

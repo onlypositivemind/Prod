@@ -2,9 +2,12 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    width: 100%;
 }
 
 .input {
+    padding: 5px 10px 5px 0;
+    width: 100%;
     font-size: var(--font-size-m);
     text-shadow: 0 0 0 var(--primary-color);
     color: transparent;
@@ -23,6 +26,10 @@
     height: 4px;
     background-color: var(--primary-color);
     animation: blink 1s forwards infinite;
+}
+
+.editing {
+    text-shadow: 0 0 0 var(--blue);
 }
 
 @keyframes blink {

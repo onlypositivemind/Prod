@@ -1,7 +1,9 @@
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkSize } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { getUserAuthData } from 'entities/User';
 import { NavbarItemType } from '../../model/items';
 import s from './NavbarItem.module.scss';
 
@@ -9,8 +11,13 @@ interface NavbarItemProps extends NavbarItemType {
     collapsed: boolean;
 }
 
-export const NavbarItem = memo(({ path, text, Icon, collapsed }: NavbarItemProps) => {
+export const NavbarItem = memo(({ path, text, Icon, collapsed, authOnly }: NavbarItemProps) => {
     const { t } = useTranslation();
+    const isAuth = useSelector(getUserAuthData);
+
+    if (authOnly && !isAuth) {
+        return null;
+    }
 
     return (
         <AppLink

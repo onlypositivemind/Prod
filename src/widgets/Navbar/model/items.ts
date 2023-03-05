@@ -8,10 +8,11 @@ export interface NavbarItemType {
     path: string;
     text: string;
     Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+    authOnly?: boolean;
 }
 
 export const NavbarItemsList: NavbarItemType[] = [
     { path: RoutesPath.main, text: 'Главная', Icon: MainPageIcon },
     { path: RoutesPath.about, text: 'О нас', Icon: AboutPageIcon },
-    { path: RoutesPath.profile, text: 'Профиль', Icon: ProfilePageIcon },
+    { path: RoutesPath.profile, text: 'Профиль', Icon: ProfilePageIcon, authOnly: true },
 ];
