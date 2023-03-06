@@ -53,7 +53,7 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
                             theme={ButtonTheme.PRIMARY}
                             onClick={handleCancelEdit}
                         >
-                            {t('Отмнеить')}
+                            {t('Отменить')}
                         </Button>
                     </div>
                 )}

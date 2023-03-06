@@ -61,7 +61,6 @@ export const ProfileCard = ({
         );
     }
 
-    console.log(readonly);
     return (
         <div className={classNames(s.profileCard, [className], { [s.editing]: !readonly })}>
             <div className={s.data}>

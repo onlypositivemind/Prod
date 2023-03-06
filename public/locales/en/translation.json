@@ -13,6 +13,8 @@
     "Неверное имя или пароль": "Invalid username or password",
     "Выйти": "Log out",
     "Изменить": "Edit",
+    "Сохранить": "Save",
+    "Отменить": "Cancel",
     "Имя": "Name",
     "Фамилия": "Surname",
     "Возраст": "Age",
