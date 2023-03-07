@@ -1,6 +1,5 @@
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { updateProfileData } from 'entities/Profile';
 import { profileActions, profileReducer } from './profileSlice';
 import { ProfileSchema, ValidateProfileError } from '../types/profile';
@@ -18,6 +17,7 @@ const data = {
 describe('profileSlice', () => {
     test('setReadonly', () => {
         const state: DeepPartial<ProfileSchema> = { readonly: false };
+
         expect(profileReducer(
             state as ProfileSchema,
             profileActions.setReadonly(true),
@@ -26,6 +26,7 @@ describe('profileSlice', () => {
 
     test('cancelEdit', () => {
         const state: DeepPartial<ProfileSchema> = { data, form: { username: '' } };
+
         expect(profileReducer(
             state as ProfileSchema,
             profileActions.cancelEdit(),
