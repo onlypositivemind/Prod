@@ -2,5 +2,6 @@
     display: grid;
     flex-grow: 1;
     place-items: center;
+    width: 100%;
     height: calc(100vh - var(--header-height));
 }

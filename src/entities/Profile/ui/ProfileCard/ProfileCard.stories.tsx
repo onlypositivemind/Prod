@@ -4,12 +4,14 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import AvatarImg from 'shared/assets/tests/storybook.png';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { ProfileCard } from './ProfileCard';
 
 export default {
     title: 'entities/ProfileCard',
     component: ProfileCard,
     argTypes: { backgroundColor: { control: 'color' } },
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ProfileCard>;
 
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;

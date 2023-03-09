@@ -1,0 +1,26 @@
+.iconWrapper {
+    svg * {
+        width: 100%;
+        height: 100%;
+        fill: var(--inverted-bg-color);
+        object-fit: cover;
+    }
+}
+
+.iconWrapper.default {
+    svg * {
+        fill: var(--inverted-bg-color);
+    }
+}
+
+.iconWrapper.success {
+    svg * {
+        fill: var(--success--primary-color);
+    }
+}
+
+.iconWrapper.error {
+    svg * {
+        fill: var(--error-primary-color);
+    }
+}

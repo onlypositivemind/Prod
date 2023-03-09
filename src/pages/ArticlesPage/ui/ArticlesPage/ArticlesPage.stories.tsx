@@ -6,7 +6,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import ArticlesPage from './ArticlesPage';
 
 export default {
-    title: 'new/ArticlesPage',
+    title: 'pages/ArticlesPage',
     component: ArticlesPage,
     argTypes: { backgroundColor: { control: 'color' } },
 } as ComponentMeta<typeof ArticlesPage>;
