@@ -3,12 +3,12 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from '../../types/article';
 
 export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(
-    '@@profile/fetchArticleById',
-    async (id, thunkApi) => {
+    '@@articleDetails/fetchArticleById',
+    async (articleId, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
 
         try {
-            const { data } = await extra.api.get<Article>(`/articles/${id}`);
+            const { data } = await extra.api.get<Article>(`/articles/${articleId}`);
 
             if (!data) {
                 throw new Error();
