@@ -24,7 +24,7 @@ export const Code = memo(({ className, text }: CodeProps) => {
     }, [isCopied, text]);
 
     return (
-        <pre className={classNames(s.code, [className], {})}>
+        <pre className={classNames(s.code, [className], { [s.copied]: isCopied })}>
             <Button className={s.copyBtn} onClick={handleCopy}>
                 <Icon Svg={CopyIcon} width={25} height={25} />
             </Button>
@@ -33,7 +33,7 @@ export const Code = memo(({ className, text }: CodeProps) => {
             </code>
             <Icon
                 Svg={DoneIcon}
-                className={classNames(s.info, [], { [s.copied]: isCopied })}
+                className={s.successIcon}
                 width={20}
                 height={20}
                 style={IconStyle.SUCCESS}

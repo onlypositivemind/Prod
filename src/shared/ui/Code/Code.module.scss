@@ -6,22 +6,32 @@
     background-color: var(--code-bg-color);
 }
 
-.copyBtn {
+.copyBtn,
+.successIcon {
     position: absolute;
     right: 20px;
     top: 20px;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.info {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.info.copied {
+.copyBtn {
     opacity: 1;
     visibility: visible;
+}
+
+.successIcon {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.code.copied {
+    .copyBtn {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .successIcon {
+        opacity: 1;
+        visibility: visible;
+    }
 }
