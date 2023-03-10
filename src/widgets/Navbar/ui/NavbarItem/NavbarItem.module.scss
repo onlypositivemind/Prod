@@ -3,14 +3,6 @@
     display: block;
     padding-left: 50px;
     width: fit-content;
-    opacity: 1;
-    transition: opacity 0.2s ease-in-out;
-    
-    @media (any-hover: hover) {
-        &:hover {
-            opacity: 0.6;
-        }
-    }
 }
 
 .icon {

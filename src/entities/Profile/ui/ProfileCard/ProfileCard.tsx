@@ -4,12 +4,9 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { fetchProfileData, Profile } from 'entities/Profile';
+import { Profile } from 'entities/Profile';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useCallback } from 'react';
 import s from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -44,13 +41,6 @@ export const ProfileCard = ({
     handleChangeCountry,
 }: ProfileCardProps) => {
     const { t } = useTranslation(['translation', 'profile']);
-    const dispatch = useAppDispatch();
-
-    const handleReloadData = useCallback(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
 
     if (error) {
         return (
@@ -60,12 +50,6 @@ export const ProfileCard = ({
                     theme={TextTheme.ERROR}
                     align={TextAlign.CENTER}
                 />
-                <Button
-                    onClick={handleReloadData}
-                    theme={ButtonTheme.CLEAR}
-                >
-                    {t('Обновить')}
-                </Button>
             </div>
         );
     }

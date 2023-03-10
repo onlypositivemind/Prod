@@ -46,7 +46,7 @@ const LoginForm = memo(({ className, handleCloseModal }: LoginFormProps) => {
     }, [dispatch, handleCloseModal, password, username]);
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeWhenUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(s.loginFrom, [className], {})}>
                 <Text title={t('Форма авторизации')} />
                 {error && <Text text={t('Неверное имя или пароль')} theme={TextTheme.ERROR} className={s.error} />}

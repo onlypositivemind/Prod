@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
+import { getProfileData, getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { getUserAuthData } from 'entities/User';
 import s from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -15,6 +16,9 @@ interface ProfilePageHeaderProps {
 export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
     const readonly = useSelector(getProfileReadonly);
 
     const handleEdit = useCallback(() => {
@@ -31,32 +35,34 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
 
     return (
         <div className={classNames(s.header, [className], {})}>
-            <Text title={t('Профиль')} />
-            {readonly
-                ? (
-                    <Button
-                        theme={ButtonTheme.PRIMARY}
-                        onClick={handleEdit}
-                    >
-                        {t('Изменить')}
-                    </Button>
-                )
-                : (
-                    <div className={s.btns}>
-                        <Button
-                            theme={ButtonTheme.BLUE}
-                            onClick={handleSave}
-                        >
-                            {t('Сохранить')}
-                        </Button>
+            <Text title={t('Профиль')} className={s.title} />
+            {canEdit && (
+                readonly
+                    ? (
                         <Button
                             theme={ButtonTheme.PRIMARY}
-                            onClick={handleCancelEdit}
+                            onClick={handleEdit}
                         >
-                            {t('Отменить')}
+                            {t('Изменить')}
                         </Button>
-                    </div>
-                )}
+                    )
+                    : (
+                        <div className={s.btns}>
+                            <Button
+                                theme={ButtonTheme.BLUE}
+                                onClick={handleSave}
+                            >
+                                {t('Сохранить')}
+                            </Button>
+                            <Button
+                                theme={ButtonTheme.PRIMARY}
+                                onClick={handleCancelEdit}
+                            >
+                                {t('Отменить')}
+                            </Button>
+                        </div>
+                    )
+            )}
         </div>
     );
 };

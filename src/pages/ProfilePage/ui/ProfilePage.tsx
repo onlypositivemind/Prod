@@ -1,4 +1,5 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -17,12 +18,14 @@ import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = { profile: profileReducer };
 
 const ProfilePage = memo(() => {
     const { t } = useTranslation('profile');
+    const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
@@ -41,11 +44,11 @@ const ProfilePage = memo(() => {
         [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера при сохранении'),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const handleChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ firstname: value }));
@@ -84,7 +87,7 @@ const ProfilePage = memo(() => {
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeWhenUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <main>
                 <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (

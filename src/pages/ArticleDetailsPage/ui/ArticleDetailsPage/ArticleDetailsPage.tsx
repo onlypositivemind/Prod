@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -9,9 +9,12 @@ import { CommentsList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
+import { getArticleDetailsIsLoading } from 'entities/Article/model/selectors/articleDetails';
 import {
     fetchCommentsByArticleId,
-} from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+    addCommentForArticle,
+} from '../../model/services';
 import {
     getArticleCommentsError,
     getArticleCommentsIsLoading,
@@ -31,9 +34,14 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation(['article', 'comments']);
     const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
+    const articleIsLoading = useSelector(getArticleDetailsIsLoading);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const commentsError = useSelector(getArticleCommentsError);
     const comments = useSelector(getArticleComments.selectAll);
+
+    const handleSendComment = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -48,17 +56,22 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeWhenUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <main className={classNames(s.articleDetailsPage, [className], {})}>
                 <ArticleDetails id={id} />
-                <Text
-                    title={t('Комментарии', { ns: 'comments' })}
-                    className={s.commentTitle}
-                />
-                <CommentsList
-                    isLoading={commentsIsLoading}
-                    comments={comments}
-                />
+                {!articleIsLoading && (
+                    <>
+                        <Text
+                            title={t('Комментарии', { ns: 'comments' })}
+                            className={s.commentTitle}
+                        />
+                        <AddCommentForm onSendComment={handleSendComment} />
+                        <CommentsList
+                            isLoading={commentsIsLoading}
+                            comments={comments}
+                        />
+                    </>
+                )}
             </main>
         </DynamicModuleLoader>
     );
