@@ -42,7 +42,7 @@ export const Text = memo(({
         {},
     )}
     >
-        {title && <h2 className={s.title}>{title}</h2>}
+        {title && <h3 className={s.title}>{title}</h3>}
         {text && <p className={s.text}>{text}</p>}
     </div>
 ));

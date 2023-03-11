@@ -1,6 +1,7 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { NavbarItemsList } from '../../model/items';
+import { getNavbarItems } from '../../model/selectors/getNavbarItems/getNavbarItems';
 import { NavbarItem } from '../NavbarItem/NavbarItem';
 import s from './Navbar.module.scss';
 
@@ -9,14 +10,20 @@ interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = memo(({ className, collapsed }: NavbarProps) => (
-    <nav className={classNames(s.navbar, [className], { [s.collapsed]: collapsed })}>
-        <ul>
-            {NavbarItemsList.map((item) => (
-                <li key={item.path}>
-                    <NavbarItem collapsed={collapsed} {...item} />
-                </li>
-            ))}
-        </ul>
-    </nav>
-));
+export const Navbar = memo(({ className, collapsed }: NavbarProps) => {
+    const navbarItemsList = useSelector(getNavbarItems);
+
+    const itemsList = useMemo(() => navbarItemsList.map((item) => (
+        <li key={item.path}>
+            <NavbarItem collapsed={collapsed} {...item} />
+        </li>
+    )), [collapsed, navbarItemsList]);
+
+    return (
+        <nav className={classNames(s.navbar, [className], { [s.collapsed]: collapsed })}>
+            <ul>
+                {itemsList}
+            </ul>
+        </nav>
+    );
+});

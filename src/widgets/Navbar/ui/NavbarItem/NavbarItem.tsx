@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkSize } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { getUserAuthData } from 'entities/User';
-import { NavbarItemType } from '../../model/items';
+import { NavbarItemType } from 'widgets/Navbar/model/types/navbar';
 import s from './NavbarItem.module.scss';
 
 interface NavbarItemProps extends NavbarItemType {

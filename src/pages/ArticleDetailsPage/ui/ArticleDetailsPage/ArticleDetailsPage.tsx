@@ -58,20 +58,22 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <main className={classNames(s.articleDetailsPage, [className], {})}>
-                <ArticleDetails id={id} />
-                {!articleIsLoading && (
-                    <>
-                        <Text
-                            title={t('Комментарии', { ns: 'comments' })}
-                            className={s.commentTitle}
-                        />
-                        <AddCommentForm onSendComment={handleSendComment} />
-                        <CommentsList
-                            isLoading={commentsIsLoading}
-                            comments={comments}
-                        />
-                    </>
-                )}
+                <article>
+                    <ArticleDetails id={id} />
+                    {!articleIsLoading && (
+                        <>
+                            <Text
+                                title={t('Комментарии', { ns: 'comments' })}
+                                className={s.commentTitle}
+                            />
+                            <AddCommentForm onSendComment={handleSendComment} />
+                            <CommentsList
+                                isLoading={commentsIsLoading}
+                                comments={comments}
+                            />
+                        </>
+                    )}
+                </article>
             </main>
         </DynamicModuleLoader>
     );

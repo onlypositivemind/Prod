@@ -101,7 +101,7 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
                 </div>
                 <div className={s.articleInfo}>
                     <Icon Svg={CalendarIcon} width={20} height={20} />
-                    <Text text={article?.createdAt} />
+                    <time dateTime={article?.createdAt}>{article?.createdAt}</time>
                 </div>
                 <div className={s.blockList}>
                     {article?.blocks.map(renderBlock)}
