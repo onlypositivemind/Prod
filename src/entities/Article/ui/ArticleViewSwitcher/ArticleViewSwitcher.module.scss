@@ -1,0 +1,15 @@
+.switchers {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switcher {
+    transition: transform 0.2s ease-in-out;
+}
+
+@media (any-hover: hover) {
+    .switcher:hover {
+        transform: scale(1.1);
+    }
+}

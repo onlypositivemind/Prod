@@ -5,7 +5,8 @@ import s from './Icon.module.scss';
 export enum IconStyle {
     DEFAULT = 'default',
     SUCCESS = 'success',
-    ERROR = 'error'
+    ERROR = 'error',
+    BLUE = 'blue',
 }
 
 interface IconProps {

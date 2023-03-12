@@ -24,3 +24,9 @@
         fill: var(--error-primary-color);
     }
 }
+
+.iconWrapper.blue {
+    svg * {
+        fill: var(--blue);
+    }
+}
