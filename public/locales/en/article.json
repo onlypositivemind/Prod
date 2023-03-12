@@ -1,5 +1,6 @@
 {
     "Статья не найдена": "Article not found",
     "Произошла ошибка при загрузке статьи": "An error occurred while loading the article",
-    "Читать далее...": "Read more..."
+    "Читать далее...": "Read more...",
+    "Произошла ошибка при загрузке списка статей": "An error occurred while loading the list of articles"
 }

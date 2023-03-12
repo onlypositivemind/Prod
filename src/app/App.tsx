@@ -19,7 +19,9 @@ export const App = () => {
             <Header />
             <div className='content-page'>
                 <Sidebar />
-                {inited && <AppRouter />}
+                <main>
+                    {inited && <AppRouter />}
+                </main>
             </div>
         </div>
     );

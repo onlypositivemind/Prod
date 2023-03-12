@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from 'shared/ui/Page/Page';
 import { ArticleList, ArticleView, ArticleViewSwitcher } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { fetchArticlesList, fetchNextArticlesPage } from '../../model/services';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -28,17 +30,12 @@ const reducers: ReducersList = {
 };
 
 const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const articlesView = useSelector(getArticlesPageView);
-
-    useInitialEffect(() => {
-        dispatch(fetchArticlesList());
-        dispatch(articlesPageActions.initState());
-    });
 
     const handleChangeView = useCallback((view: ArticleView) => {
         if (articlesView !== view) {
@@ -46,16 +43,47 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
         }
     }, [articlesView, dispatch]);
 
-    return (
-        <DynamicModuleLoader reducers={reducers}>
-            <main className={classNames(s.articlesPage, [className], {})}>
+    const handleLoadNextPage = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
+
+    useInitialEffect(() => {
+        dispatch(articlesPageActions.initState());
+
+        dispatch(fetchArticlesList({
+            page: 1,
+        }));
+    });
+
+    let content;
+
+    if (error) {
+        content = (
+            <Text
+                title={t('Произошла ошибка при загрузке списка статей')}
+                theme={TextTheme.ERROR}
+                align={TextAlign.CENTER}
+            />
+        );
+    } else {
+        content = (
+            <Page
+                className={classNames(s.articlesPage, [className], {})}
+                onScrollEnd={handleLoadNextPage}
+            >
                 <ArticleViewSwitcher view={articlesView} onViewClick={handleChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}
                     view={articlesView}
                 />
-            </main>
+            </Page>
+        );
+    }
+
+    return (
+        <DynamicModuleLoader reducers={reducers}>
+            {content}
         </DynamicModuleLoader>
     );
 });

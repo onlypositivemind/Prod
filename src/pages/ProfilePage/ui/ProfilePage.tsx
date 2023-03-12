@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { Page } from 'shared/ui/Page/Page';
 import {
     fetchProfileData,
     getProfileError,
@@ -88,7 +89,7 @@ const ProfilePage = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <main>
+            <Page>
                 <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
                     <Text
@@ -111,7 +112,7 @@ const ProfilePage = memo(() => {
                     handleChangeCurrency={handleChangeCurrency}
                     handleChangeCountry={handleChangeCountry}
                 />
-            </main>
+            </Page>
         </DynamicModuleLoader>
     );
 });
