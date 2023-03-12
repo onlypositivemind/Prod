@@ -1,0 +1,12 @@
+.articleList.SMALL {
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.articleList.BIG {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+}

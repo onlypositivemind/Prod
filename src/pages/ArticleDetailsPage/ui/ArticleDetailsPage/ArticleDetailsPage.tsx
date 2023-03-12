@@ -10,15 +10,9 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
-import { getArticleDetailsIsLoading } from 'entities/Article/model/selectors/articleDetails';
-import {
-    fetchCommentsByArticleId,
-    addCommentForArticle,
-} from '../../model/services';
-import {
-    getArticleCommentsError,
-    getArticleCommentsIsLoading,
-} from '../../model/selectors/comments';
+import { getArticleDetailsError, getArticleDetailsIsLoading } from 'entities/Article/model/selectors/articleDetails';
+import { addCommentForArticle, fetchCommentsByArticleId } from '../../model/services';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import s from './ArticleDetailsPage.module.scss';
 
@@ -35,8 +29,8 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const articleIsLoading = useSelector(getArticleDetailsIsLoading);
+    const articleError = useSelector(getArticleDetailsError);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const commentsError = useSelector(getArticleCommentsError);
     const comments = useSelector(getArticleComments.selectAll);
 
     const handleSendComment = useCallback((text: string) => {
@@ -60,7 +54,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
             <main className={classNames(s.articleDetailsPage, [className], {})}>
                 <article>
                     <ArticleDetails id={id} />
-                    {!articleIsLoading && (
+                    {(!articleIsLoading && !articleError) && (
                         <>
                             <Text
                                 title={t('Комментарии', { ns: 'comments' })}

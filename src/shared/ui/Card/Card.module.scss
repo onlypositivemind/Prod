@@ -1,0 +1,15 @@
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--radii);
+    padding: 10px;
+    background-color: var(--card-bg);
+    transition: box-shadow 0.2s ease-in-out;
+    
+    @media (any-hover: hover) {
+        &:hover {
+            box-shadow: var(--shadow);
+        }
+    }
+}

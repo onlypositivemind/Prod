@@ -10,6 +10,10 @@ const article: Article = {
     img: 'https://blog.logrocket.com/wp-content/uploads/2022/07/guide-promises-node-js-nocdn.png',
     views: 2002,
     createdAt: '29.09.2022',
+    user: {
+        id: '1',
+        username: 'Evgenii',
+    },
     type: [ArticleType.IT],
     blocks: [
         {

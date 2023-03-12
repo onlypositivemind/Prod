@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { SecondaryBgColorDecorator } from 'shared/config/storybook/SecondaryBgColorDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Sidebar } from './Sidebar';
 

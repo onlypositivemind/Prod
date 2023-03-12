@@ -14,6 +14,8 @@ import { ArticleCodeBlockComponent } from 'entities/Article/ui/ArticleCodeBlockC
 import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { RoutesPath } from 'shared/config/routeConfig/routeConfig';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import {
     getArticleDetailsData,
@@ -113,6 +115,15 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(s.articleDetails, [className], {})}>
+                {!isLoading && (
+                    <AppLink
+                        to={RoutesPath.articles}
+                        theme={AppLinkTheme.PRIMARY}
+                        className={s.link}
+                    >
+                        {t('Вернуться к списку')}
+                    </AppLink>
+                )}
                 {content}
             </div>
         </DynamicModuleLoader>
