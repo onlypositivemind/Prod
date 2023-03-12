@@ -5,10 +5,13 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'shared/ui/Page/Page';
-import { ArticleList, ArticleView, ArticleViewSwitcher } from 'entities/Article';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
-import { fetchArticlesList, fetchNextArticlesPage } from '../../model/services';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ArticleList, ArticleView, ArticleViewSwitcher } from 'entities/Article';
+import { fetchNextArticlesPage, initArticlesPage } from '../../model/services';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -16,6 +19,7 @@ import {
 } from '../../model/slice/articlesPageSlice';
 import {
     getArticlesPageError,
+    getArticlesPageHasMore,
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors/articlesPageSelectors';
@@ -36,6 +40,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const articlesView = useSelector(getArticlesPageView);
+    const hasMore = useSelector(getArticlesPageHasMore);
 
     const handleChangeView = useCallback((view: ArticleView) => {
         if (articlesView !== view) {
@@ -44,15 +49,13 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     }, [articlesView, dispatch]);
 
     const handleLoadNextPage = useCallback(() => {
-        dispatch(fetchNextArticlesPage());
-    }, [dispatch]);
+        if (hasMore) {
+            dispatch(fetchNextArticlesPage());
+        }
+    }, [dispatch, hasMore]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        dispatch(initArticlesPage());
     });
 
     let content;
@@ -82,7 +85,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeWhenUnmount={false}>
             {content}
         </DynamicModuleLoader>
     );
