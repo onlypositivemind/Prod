@@ -1,6 +1,7 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
+import { userReducer } from 'entities/User';
+import { UIReducer } from 'features/UI';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
@@ -11,6 +12,7 @@ export const createReduxStore = (
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+        ui: UIReducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);

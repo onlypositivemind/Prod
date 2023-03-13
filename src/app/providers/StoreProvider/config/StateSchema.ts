@@ -4,12 +4,14 @@ import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
+import { UISchema } from 'features/UI';
 import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSchema } from 'entities/Article';
 
 export interface StateSchema {
     user: UserSchema;
+    ui: UISchema;
 
     // Async reducers
     loginForm?: LoginSchema;
