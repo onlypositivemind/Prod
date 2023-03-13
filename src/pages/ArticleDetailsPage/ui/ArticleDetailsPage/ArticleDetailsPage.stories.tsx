@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleFilter } from 'entities/Article/model/types/article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
@@ -22,7 +22,7 @@ const article: Article = {
     img: 'https://blog.logrocket.com/wp-content/uploads/2022/07/guide-promises-node-js-nocdn.png',
     views: 2002,
     createdAt: '29.09.2022',
-    type: [ArticleType.IT],
+    type: [ArticleFilter.IT],
     user: {
         id: '1',
         username: 'Evgenii',

@@ -4,7 +4,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ArticleDetails } from './ArticleDetails';
-import { Article, ArticleBlockType, ArticleType } from '../../model/types/article';
+import { Article, ArticleBlockType, ArticleFilter } from '../../model/types/article';
 
 export default {
     title: 'entities/Article/ArticleDetails',
@@ -25,7 +25,7 @@ const article: Article = {
         id: '1',
         username: 'Evgenii',
     },
-    type: [ArticleType.IT],
+    type: [ArticleFilter.IT],
     blocks: [
         {
             id: '1',

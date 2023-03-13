@@ -4,7 +4,6 @@
     overflow: hidden;
     border-radius: var(--radii);
     padding: 10px;
-    background-color: var(--card-bg);
     transition: box-shadow 0.2s ease-in-out;
     
     @media (any-hover: hover) {
@@ -12,4 +11,13 @@
             box-shadow: var(--shadow);
         }
     }
+}
+
+.cardWrapper.normal {
+    background-color: var(--card-bg);
+}
+
+.cardWrapper.outline {
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
 }

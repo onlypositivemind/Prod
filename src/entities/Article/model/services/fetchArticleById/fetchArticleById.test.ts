@@ -1,5 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { ArticleBlockType, ArticleType } from '../../types/article';
+import { ArticleBlockType, ArticleFilter } from '../../types/article';
 import { fetchArticleById } from './fetchArticleById';
 
 const data = {
@@ -9,7 +9,7 @@ const data = {
     img: 'https://blog.logrocket.com/wp-content/uploads/2022/07/guide-promises-node-js-nocdn.png',
     views: 2002,
     createdAt: '29.09.2022',
-    type: [ArticleType.IT],
+    type: [ArticleFilter.IT],
     blocks: [
         {
             id: '1',

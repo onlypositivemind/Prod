@@ -1,5 +1,5 @@
 import { Article, ArticleDetailsSchema } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleFilter } from 'entities/Article/model/types/article';
 import { articleDetailsReducer } from './articleDetailsSlice';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
 
@@ -14,7 +14,7 @@ const article: Article = {
         id: '1',
         username: 'Evgenii',
     },
-    type: [ArticleType.IT],
+    type: [ArticleFilter.IT],
     blocks: [
         {
             id: '1',

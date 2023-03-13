@@ -1,5 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
@@ -10,10 +11,10 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ArticleList, ArticleView, ArticleViewSwitcher } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { fetchNextArticlesPage, initArticlesPage } from '../../model/services';
 import {
-    articlesPageActions,
     articlesPageReducer,
     getArticles,
 } from '../../model/slice/articlesPageSlice';
@@ -35,18 +36,14 @@ const reducers: ReducersList = {
 
 const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     const { t } = useTranslation('article');
+    const [searchParams] = useSearchParams();
+
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const articlesView = useSelector(getArticlesPageView);
     const hasMore = useSelector(getArticlesPageHasMore);
-
-    const handleChangeView = useCallback((view: ArticleView) => {
-        if (articlesView !== view) {
-            dispatch(articlesPageActions.setView(view));
-        }
-    }, [articlesView, dispatch]);
 
     const handleLoadNextPage = useCallback(() => {
         if (hasMore) {
@@ -55,7 +52,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     }, [dispatch, hasMore]);
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     let content;
@@ -74,7 +71,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
                 className={classNames(s.articlesPage, [className], {})}
                 onScrollEnd={handleLoadNextPage}
             >
-                <ArticleViewSwitcher view={articlesView} onViewClick={handleChangeView} />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}

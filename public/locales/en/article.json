@@ -2,5 +2,18 @@
     "Статья не найдена": "Article not found",
     "Произошла ошибка при загрузке статьи": "An error occurred while loading the article",
     "Читать далее...": "Read more...",
-    "Произошла ошибка при загрузке списка статей": "An error occurred while loading the list of articles"
+    "Произошла ошибка при загрузке списка статей": "An error occurred while loading the list of articles",
+    "Сортировать по": "Sort by",
+    "По": "By",
+    "Возрастанию": "Ascending",
+    "Убыванию": "Descending",
+    "Дате создания": "Creation date",
+    "Названию": "Name",
+    "Просмотрам": "Views",
+    "Поиск...": "Search...",
+    "Все": "All",
+    "Айти": "IT",
+    "Экономика": "Economic",
+    "Наука": "Science",
+    "Статьи не найдены": "Articles not found"
 }

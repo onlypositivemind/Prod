@@ -50,7 +50,7 @@ export const Page = ({ className, children, onScrollEnd }: PageProps) => {
             onScroll={handleScroll}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd && <div ref={triggerRef} />}
         </section>
     );
 };
